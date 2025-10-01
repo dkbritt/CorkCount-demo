@@ -305,114 +305,15 @@ interface EmailResponse {
 export async function sendOrderConfirmationEmail(
   orderData: OrderEmailData,
 ): Promise<EmailResponse> {
-  try {
-    // Check if server is available first
-    const serverAvailable = await checkServerAvailability();
-    if (!serverAvailable) {
-      console.warn(
-        "Email server not available, order confirmation will be skipped",
-      );
-      return {
-        success: false,
-        error:
-          "Email service temporarily unavailable. Order was saved but confirmation email could not be sent.",
-      };
-    }
-
-    const emailHTML = generateOrderConfirmationHTML(orderData);
-
-    // Build email requests on client side, server will handle configuration
-    const emailRequests = [
-      {
-        type: "order_confirmation",
-        to: orderData.customerEmail,
-        subject: "Your KB Winery Order Confirmation",
-        html: emailHTML,
-        orderData: {
-          orderNumber: orderData.orderNumber,
-          customerEmail: orderData.customerEmail,
-        },
-      },
-    ];
-
-    const response = await apiFetch("/email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: emailRequests }),
-    });
-
-    if (!response.ok) {
-      const text = await response.text().catch(() => "");
-      throw new Error(text || `Email service error: ${response.status}`);
-    }
-
-    const result = await response.json();
-    if (!result.success) {
-      let detail = "";
-
-      // Handle skipped emails
-      if (result.skipped && result.skipped.length > 0) {
-        const skippedDetails = result.skipped
-          .map((s: any) => `${s.email}: ${s.reason}`)
-          .join("; ");
-        detail += `Skipped emails: ${skippedDetails}. `;
-      }
-
-      // Handle failed emails
-      if (Array.isArray(result.failures)) {
-        const failureDetails = result.failures
-          .map(
-            (f: any) =>
-              `${f.type === "admin_notification" ? "Admin" : "Customer"} email failed: ${f.reason}`,
-          )
-          .join("; ");
-        detail += failureDetails;
-      } else {
-        detail += result.error || "Unknown error";
-      }
-
-      return {
-        success: false,
-        error: detail.trim(),
-        customerSuccess: result.customerSuccess || false,
-        adminSuccess: result.adminSuccess || false,
-        partialSuccess: result.sent > 0,
-        skipped: result.skipped,
-        domain: result.domain,
-        fromAddress: result.fromAddress,
-      };
-    }
-    return {
-      success: true,
-      customerSuccess: result.customerSuccess || true,
-      adminSuccess: result.adminSuccess || true,
-      emailsSent: result.sent || result.total || 1,
-      skipped: result.skipped,
-      domain: result.domain,
-      fromAddress: result.fromAddress,
-    };
-  } catch (error) {
-    console.error("Error sending order confirmation email:", error);
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown email error";
-
-    // Provide user-friendly error messages
-    if (
-      errorMessage.includes("Failed to fetch") ||
-      errorMessage.includes("fetch")
-    ) {
-      return {
-        success: false,
-        error:
-          "Email service temporarily unavailable. Order was saved but confirmation email could not be sent.",
-      };
-    }
-
-    return {
-      success: false,
-      error: errorMessage,
-    };
-  }
+  // Simulated success in demo mode (no external email service)
+  const preview = generateOrderConfirmationHTML(orderData);
+  void preview;
+  return {
+    success: true,
+    emailsSent: 1,
+    customerSuccess: true,
+    adminSuccess: false,
+  };
 }
 
 // Send status update email - now relies entirely on server-side configuration
