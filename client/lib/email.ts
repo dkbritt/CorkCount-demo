@@ -258,7 +258,7 @@ const generateStatusUpdateHTML = (data: StatusUpdateEmailData): string => {
             ? `
           <div style="background: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 6px; margin: 20px 0;">
             <h4 style="margin-top: 0; color: #0c5460;">Thank you!</h4>
-            <p style="margin-bottom: 0;">Thank you for choosing KB Winery! We hope you enjoy your wine selection.</p>
+            <p style="margin-bottom: 0;">Thank you for choosing Foxglove Creek Winery! We hope you enjoy your wine selection.</p>
           </div>
         `
             : ""
