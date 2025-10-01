@@ -576,7 +576,7 @@ export function InventoryTab({
         const newItem: InventoryItem = {
           id: result.item.id,
           name: formData.bottleName,
-          winery: "KB Winery",
+          winery: "Foxglove Creek Winery",
           vintage: parseInt(formData.vintage),
           type: formData.type,
           quantity: quantity,
