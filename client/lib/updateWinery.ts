@@ -1,4 +1,4 @@
-// Utility to update existing winery names from "CorkCount Winery" to "KB Winery"
+// Utility to update existing winery names from "CorkCount Winery" to "Foxglove Creek Winery"
 // Note: This bulk operation would be more efficient as a dedicated server endpoint
 import { apiFetch } from "@/lib/api";
 
