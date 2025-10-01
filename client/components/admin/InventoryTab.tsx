@@ -430,7 +430,7 @@ export function InventoryTab({
 
       const inventoryData = {
         name: formData.bottleName,
-        winery: "KB Winery", // Default winery
+        winery: "Foxglove Creek Winery", // Default winery
         vintage: parseInt(formData.vintage),
         type: formData.type,
         quantity: quantity,
