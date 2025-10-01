@@ -375,7 +375,7 @@ export default function Index() {
                 style={{ animationDelay: "0.8s" }}
               >
                 <p>
-                  KB Winery's finest — from casual sips to collector's picks,
+                  Foxglove Creek Winery's finest — from casual sips to collector's picks,
                   every bottle tells a story.
                   <br />
                   <strong></strong>
