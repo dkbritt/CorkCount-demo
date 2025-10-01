@@ -70,13 +70,13 @@ const getStatusDisplayName = (status: string): string => {
 const generateStatusSubject = (newStatus: string): string => {
   switch (newStatus) {
     case "ready-for-pickup":
-      return "Your KB Winery Order is Ready for Pickup";
+      return "Your Foxglove Creek Winery Order is Ready for Pickup";
     case "picked-up":
-      return "Your KB Winery Order has been Picked Up";
+      return "Your Foxglove Creek Winery Order has been Picked Up";
     case "cancelled":
-      return "Your KB Winery Order has been Cancelled";
+      return "Your Foxglove Creek Winery Order has been Cancelled";
     default:
-      return "Your KB Winery Order Status Update";
+      return "Your Foxglove Creek Winery Order Status Update";
   }
 };
 
@@ -112,7 +112,7 @@ const generateOrderConfirmationHTML = (data: OrderEmailData): string => {
     </head>
     <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #722F37 0%, #8B1538 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-        <h1 style="margin: 0; font-size: 28px; font-weight: 300;">KB Winery</h1>
+        <h1 style="margin: 0; font-size: 28px; font-weight: 300;">Foxglove Creek Winery</h1>
         <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Order Confirmation</p>
       </div>
       
@@ -192,11 +192,11 @@ const generateOrderConfirmationHTML = (data: OrderEmailData): string => {
         
         <p>We'll send you another email when your order is ready for pickup. If you have any questions, please don't hesitate to contact us.</p>
         
-        <p>Cheers!<br>The KB Winery Team</p>
+        <p>Cheers!<br>The Foxglove Creek Winery Team</p>
       </div>
       
       <div style="text-align: center; padding: 20px; font-size: 12px; color: #666;">
-        <p>KB Winery | Fine Wines & Exceptional Service</p>
+        <p>Foxglove Creek Winery | Fine Wines & Exceptional Service</p>
       </div>
     </body>
     </html>
@@ -223,7 +223,7 @@ const generateStatusUpdateHTML = (data: StatusUpdateEmailData): string => {
     </head>
     <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #722F37 0%, #8B1538 100%); color: white; padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-        <h1 style="margin: 0; font-size: 28px; font-weight: 300;">KB Winery</h1>
+        <h1 style="margin: 0; font-size: 28px; font-weight: 300;">Foxglove Creek Winery</h1>
         <p style="margin: 10px 0 0 0; font-size: 16px; opacity: 0.9;">Order Update</p>
       </div>
       
@@ -277,11 +277,11 @@ const generateStatusUpdateHTML = (data: StatusUpdateEmailData): string => {
         
         <p>If you have any questions about your order, please don't hesitate to contact us.</p>
         
-        <p>Cheers!<br>The KB Winery Team</p>
+        <p>Cheers!<br>The Foxglove Creek Winery Team</p>
       </div>
       
       <div style="text-align: center; padding: 20px; font-size: 12px; color: #666;">
-        <p>KB Winery | Fine Wines & Exceptional Service</p>
+        <p>Foxglove Creek Winery | Fine Wines & Exceptional Service</p>
       </div>
     </body>
     </html>
