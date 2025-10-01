@@ -1,0 +1,526 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    /* CorkCount Design System Colors */
+    --background: 0 0% 96%;
+    --foreground: 0 37% 19%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 37% 19%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 37% 19%;
+
+    --primary: 0 37% 31%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 37% 19%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 240 73% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 37% 31%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode for CorkCount */
+    --background: 0 37% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 37% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 37% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 37% 31%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 37% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 37% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 240 73% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 37% 18%;
+    --input: 0 37% 18%;
+    --ring: 0 37% 31%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  /* Wine-inspired hero section with cork texture background */
+  .hero-wine-gradient {
+    background-image: url("https://images.pexels.com/photos/9958000/pexels-photo-9958000.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Semi-transparent overlay for text readability */
+  .hero-wine-gradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Additional subtle wine-colored overlay for warmth */
+  .hero-wine-gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(114, 47, 55, 0.15);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Ensure hero content is above overlays */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Enhanced text overlay for better readability */
+  .hero-text-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1px);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+
+  /* Hero text styling with high contrast and shadows */
+  .hero-main-title {
+    color: #fefefe;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.6));
+  }
+
+  .hero-subtitle {
+    color: #f5e6c4;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-headline {
+    color: #fefefe;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    line-height: 1.2;
+  }
+
+  .hero-description {
+    color: #f5e6c4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Fade-in animation for hero content - controlled by React state */
+  .hero-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 1.2s ease-out,
+      transform 1.2s ease-out;
+  }
+
+  .hero-fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Wine card scroll animations */
+  .wine-card-enter {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .wine-card-enter.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-fade-in,
+    .wine-card-enter,
+    .admin-fade-in,
+    .admin-card-hover,
+    .admin-metric-card {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .admin-metric-card:hover,
+    .admin-card-hover:hover {
+      transform: none !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+
+  /* Admin Dashboard Enhancements */
+
+  /* Admin header consistency */
+  .ml-15 {
+    margin-left: 3.75rem; /* 60px for 12-width icon + 12px gap */
+  }
+
+  /* Wine-themed color palette variables */
+  :root {
+    --admin-blush-rose: #f4e4e6;
+    --admin-muted-plum: #8e5572;
+    --admin-cork-brown: #a0826d;
+    --admin-soft-burgundy: #b85450;
+    --admin-champagne: #f7f3e9;
+    --admin-sage-green: #9caf88;
+  }
+
+  /* Section dividers */
+  .admin-section-divider {
+    border-bottom: 1px solid #e5e7eb;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      #e5e7eb 20%,
+      #e5e7eb 80%,
+      transparent 100%
+    );
+    height: 1px;
+    margin: 1rem 0;
+  }
+
+  .admin-section-divider.wine-themed {
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      var(--admin-blush-rose) 20%,
+      var(--admin-cork-brown) 50%,
+      var(--admin-blush-rose) 80%,
+      transparent 100%
+    );
+    opacity: 0.6;
+  }
+
+  /* Fade-in animations for admin cards */
+  .admin-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .admin-fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Admin card hover effects */
+  .admin-card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e5e7eb;
+  }
+
+  .admin-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--admin-blush-rose);
+  }
+
+  /* Wine-themed accent colors */
+  .wine-accent-bg {
+    background: linear-gradient(
+      135deg,
+      var(--admin-blush-rose) 0%,
+      var(--admin-champagne) 100%
+    );
+  }
+
+  .wine-accent-text {
+    color: var(--admin-muted-plum);
+  }
+
+  .wine-accent-border {
+    border-color: var(--admin-cork-brown);
+  }
+
+  /* Enhanced metric cards */
+  .admin-metric-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .admin-metric-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--admin-soft-burgundy),
+      var(--admin-muted-plum),
+      var(--admin-cork-brown)
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .admin-metric-card:hover::before {
+    opacity: 1;
+  }
+
+  .admin-metric-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.12),
+      0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--admin-blush-rose);
+  }
+
+  /* Wine-themed icon containers */
+  .wine-icon-container {
+    background: linear-gradient(
+      135deg,
+      var(--admin-soft-burgundy) 0%,
+      var(--admin-muted-plum) 100%
+    );
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.25);
+  }
+
+  .wine-icon-container.cork {
+    background: linear-gradient(
+      135deg,
+      var(--admin-cork-brown) 0%,
+      #8b6f47 100%
+    );
+  }
+
+  .wine-icon-container.rose {
+    background: linear-gradient(
+      135deg,
+      var(--admin-soft-burgundy) 0%,
+      #d97398 100%
+    );
+  }
+
+  .wine-icon-container.sage {
+    background: linear-gradient(
+      135deg,
+      var(--admin-sage-green) 0%,
+      #7a8471 100%
+    );
+  }
+
+  /* Activity section styling */
+  .admin-activity-section {
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      var(--admin-champagne) 100%
+    );
+    border: 1px solid var(--admin-blush-rose);
+  }
+
+  /* Tab navigation wine accents */
+  .admin-tab-active {
+    background: linear-gradient(
+      135deg,
+      var(--admin-muted-plum) 0%,
+      var(--admin-soft-burgundy) 100%
+    );
+    color: white;
+    box-shadow: 0 4px 12px rgba(142, 85, 114, 0.3);
+  }
+
+  .admin-tab-inactive:hover {
+    background-color: var(--admin-champagne);
+    color: var(--admin-muted-plum);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .wine-icon-container {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .wine-icon-container svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .admin-metric-card {
+      padding: 1rem;
+    }
+
+    .admin-section-divider {
+      margin: 0.75rem 0;
+    }
+
+    .admin-fade-in {
+      animation-delay: 0s !important;
+    }
+
+    .hero-text-overlay {
+      padding: 1.5rem;
+    }
+
+    .ml-15 {
+      margin-left: 2.75rem; /* Smaller spacing for mobile (44px for 8-width icon + 8px gap) */
+    }
+  }
+
+  @media (max-width: 640px) {
+    .admin-metric-card:hover {
+      transform: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .admin-card-hover:hover {
+      transform: none;
+    }
+  }
+
+  /* Responsive background handling */
+  @media (max-width: 768px) {
+    .hero-wine-gradient {
+      background-attachment: scroll;
+      background-size: cover;
+    }
+  }
+
+  /* Wine label-inspired search bar */
+  .wine-label-search {
+    background: linear-gradient(135deg, #faf9f7 0%, #f4f1eb 100%);
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    box-shadow:
+      0 4px 12px rgba(212, 175, 55, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wine-label-search::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(
+        circle at 25% 25%,
+        rgba(212, 175, 55, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 75%,
+        rgba(139, 69, 19, 0.05) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .wine-label-search:hover {
+    border-color: #c9a426;
+    box-shadow:
+      0 6px 16px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+  }
+
+  .wine-label-search:focus-within {
+    border-color: #b8941f;
+    box-shadow:
+      0 8px 20px rgba(212, 175, 55, 0.4),
+      0 0 0 3px rgba(212, 175, 55, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+  }
+
+  /* Wine label typography */
+  .wine-label-text {
+    color: #5d4037;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  .wine-label-placeholder::placeholder {
+    color: #8d6e63;
+    opacity: 0.8;
+  }
+}

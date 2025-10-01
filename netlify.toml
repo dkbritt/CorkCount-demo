@@ -1,0 +1,80 @@
+[build]
+  command = "npm run build:client"
+  functions = "netlify/functions"
+  publish = "dist/spa"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Individual function redirects for better error isolation
+[[redirects]]
+  force = true
+  from = "/api/ping"
+  status = 200
+  to = "/.netlify/functions/ping"
+
+[[redirects]]
+  force = true
+  from = "/api/config/*"
+  status = 200
+  to = "/.netlify/functions/config/:splat"
+
+[[redirects]]
+  force = true
+  from = "/api/inventory"
+  status = 200
+  to = "/.netlify/functions/inventory"
+
+[[redirects]]
+  force = true
+  from = "/api/inventory/*"
+  status = 200
+  to = "/.netlify/functions/inventory/:splat"
+
+[[redirects]]
+  force = true
+  from = "/api/orders"
+  status = 200
+  to = "/.netlify/functions/orders"
+
+[[redirects]]
+  force = true
+  from = "/api/orders/*"
+  status = 200
+  to = "/.netlify/functions/orders/:splat"
+
+[[redirects]]
+  force = true
+  from = "/api/batches"
+  status = 200
+  to = "/.netlify/functions/batches"
+
+[[redirects]]
+  force = true
+  from = "/api/batches/*"
+  status = 200
+  to = "/.netlify/functions/batches/:splat"
+
+[[redirects]]
+  force = true
+  from = "/api/metrics"
+  status = 200
+  to = "/.netlify/functions/metrics"
+
+[[redirects]]
+  force = true
+  from = "/api/auth/*"
+  status = 200
+  to = "/.netlify/functions/auth/:splat"
+
+[[redirects]]
+  force = true
+  from = "/api/email"
+  status = 200
+  to = "/.netlify/functions/email"
+
+[[redirects]]
+  force = true
+  from = "/api/storage/*"
+  status = 200
+  to = "/.netlify/functions/storage/:splat"
