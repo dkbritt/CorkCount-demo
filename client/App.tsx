@@ -22,7 +22,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="w-full bg-yellow-100 text-yellow-900 text-sm py-2 px-4 text-center z-50">
-          Demo Mode: Simulated data. No real emails or external services. Admin login uses demo credentials.
+          Demo Mode: Simulated data. No real emails or external services. Admin login uses demo credentials: admin@corkcount.com / admin123
         </div>
         <Routes>
           <Route path="/" element={<Index />} />
