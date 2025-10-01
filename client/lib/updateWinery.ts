@@ -35,7 +35,7 @@ export async function updateExistingWineryNames(): Promise<{
         const updateResponse = await apiFetch(`/inventory/${item.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ winery: "KB Winery" }),
+          body: JSON.stringify({ winery: "Foxglove Creek Winery" }),
         });
         const updateResult = await updateResponse.json();
 
@@ -54,7 +54,7 @@ export async function updateExistingWineryNames(): Promise<{
     }
 
     console.log(
-      `Updated ${updatedCount} inventory records from "CorkCount Winery" to "KB Winery"`,
+      `Updated ${updatedCount} inventory records from "CorkCount Winery" to "Foxglove Creek Winery"`,
     );
 
     if (errors.length > 0) {
@@ -83,7 +83,7 @@ export async function runWineryUpdate(): Promise<void> {
 
   if (result.success) {
     console.log(
-      `✅ Successfully updated ${result.updated} winery names to "KB Winery"`,
+      `✅ Successfully updated ${result.updated} winery names to "Foxglove Creek Winery"`,
     );
   } else {
     console.error(`❌ Failed to update winery names: ${result.error}`);
