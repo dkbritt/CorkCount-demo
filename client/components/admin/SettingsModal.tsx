@@ -95,7 +95,7 @@ export function SettingsModal({
       if (result.success) {
         toast({
           title: "Success!",
-          description: `Updated ${result.updated} inventory records to "KB Winery"`,
+          description: `Updated ${result.updated} inventory records to "Foxglove Creek Winery"`,
         });
       } else {
         toast({
