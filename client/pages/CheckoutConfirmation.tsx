@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  CheckCircle, 
-  Calendar, 
-  Clock, 
-  CreditCard, 
-  User, 
-  Mail, 
-  Phone, 
+import {
+  CheckCircle,
+  Calendar,
+  Clock,
+  CreditCard,
+  User,
+  Mail,
+  Phone,
   FileText,
   ArrowLeft,
-  Home
+  Home,
 } from "lucide-react";
 import { CartItem } from "@/components/CartModal";
 
@@ -33,14 +33,14 @@ interface OrderData {
 
 const paymentMethodLabels: Record<string, string> = {
   zelle: "Zelle",
-  cashapp: "CashApp", 
-  cash: "Cash"
+  cashapp: "CashApp",
+  cash: "Cash",
 };
 
 const paymentInstructions: Record<string, string> = {
   zelle: "Send payment to pay@foxglovewinery.com before pickup.",
   cashapp: "Send payment to $FoxgloveWinery before pickup.",
-  cash: "Please bring exact change to pickup."
+  cash: "Please bring exact change to pickup.",
 };
 
 export default function CheckoutConfirmation() {
@@ -66,7 +66,7 @@ export default function CheckoutConfirmation() {
       weekday: "long",
       year: "numeric",
       month: "long",
-      day: "numeric"
+      day: "numeric",
     });
   };
 
@@ -78,7 +78,7 @@ export default function CheckoutConfirmation() {
       year: "numeric",
       hour: "numeric",
       minute: "2-digit",
-      hour12: true
+      hour12: true,
     });
   };
 
@@ -119,16 +119,20 @@ export default function CheckoutConfirmation() {
               </p>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg p-4 border border-green-200">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">Order Number:</span>
+              <span className="text-sm font-medium text-gray-600">
+                Order Number:
+              </span>
               <span className="font-mono font-bold text-lg text-gray-900">
                 {orderData.orderNumber}
               </span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-600">Order Date:</span>
+              <span className="text-sm font-medium text-gray-600">
+                Order Date:
+              </span>
               <span className="text-sm text-gray-900">
                 {formatOrderDate(orderData.orderDate)}
               </span>
@@ -142,7 +146,7 @@ export default function CheckoutConfirmation() {
             <User className="h-5 w-5" />
             Customer Information
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <span className="text-sm font-medium text-gray-600">Name:</span>
@@ -154,7 +158,9 @@ export default function CheckoutConfirmation() {
             </div>
             {orderData.phone && (
               <div className="md:col-span-2">
-                <span className="text-sm font-medium text-gray-600">Phone:</span>
+                <span className="text-sm font-medium text-gray-600">
+                  Phone:
+                </span>
                 <p className="text-gray-900">{orderData.phone}</p>
               </div>
             )}
@@ -167,14 +173,20 @@ export default function CheckoutConfirmation() {
             <Calendar className="h-5 w-5" />
             Pickup Information
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <span className="text-sm font-medium text-gray-600">Pickup Date:</span>
-              <p className="text-gray-900">{formatDate(orderData.pickupDate)}</p>
+              <span className="text-sm font-medium text-gray-600">
+                Pickup Date:
+              </span>
+              <p className="text-gray-900">
+                {formatDate(orderData.pickupDate)}
+              </p>
             </div>
             <div>
-              <span className="text-sm font-medium text-gray-600">Pickup Time:</span>
+              <span className="text-sm font-medium text-gray-600">
+                Pickup Time:
+              </span>
               <p className="text-gray-900">{orderData.pickupTime}</p>
             </div>
           </div>
@@ -186,16 +198,24 @@ export default function CheckoutConfirmation() {
             <CreditCard className="h-5 w-5" />
             Payment Information
           </h3>
-          
+
           <div className="mb-4">
-            <span className="text-sm font-medium text-gray-600">Payment Method:</span>
-            <p className="text-gray-900">{paymentMethodLabels[orderData.paymentMethod]}</p>
+            <span className="text-sm font-medium text-gray-600">
+              Payment Method:
+            </span>
+            <p className="text-gray-900">
+              {paymentMethodLabels[orderData.paymentMethod]}
+            </p>
           </div>
 
           {/* Payment Instructions */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h4 className="font-medium text-blue-900 mb-2">Payment Instructions:</h4>
-            <p className="text-blue-800">{paymentInstructions[orderData.paymentMethod]}</p>
+            <h4 className="font-medium text-blue-900 mb-2">
+              Payment Instructions:
+            </h4>
+            <p className="text-blue-800">
+              {paymentInstructions[orderData.paymentMethod]}
+            </p>
           </div>
         </div>
 
@@ -205,12 +225,17 @@ export default function CheckoutConfirmation() {
             <FileText className="h-5 w-5" />
             Order Summary
           </h3>
-          
+
           <div className="space-y-3 mb-4">
             {orderData.items.map((item) => (
-              <div key={item.id} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+              <div
+                key={item.id}
+                className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
+              >
                 <div className="flex-1">
-                  <h4 className="font-medium text-gray-900">{item.wine.name}</h4>
+                  <h4 className="font-medium text-gray-900">
+                    {item.wine.name}
+                  </h4>
                   <p className="text-sm text-gray-600">
                     {item.wine.winery} • {item.wine.vintage}
                   </p>
@@ -231,11 +256,20 @@ export default function CheckoutConfirmation() {
               </div>
             ))}
           </div>
-          
+
           <div className="border-t border-gray-200 pt-3">
             <div className="flex justify-between items-center">
               <span className="font-medium text-gray-900">
-                Total ({orderData.items.reduce((sum, item) => sum + item.quantity, 0)} item{orderData.items.reduce((sum, item) => sum + item.quantity, 0) !== 1 ? 's' : ''}):
+                Total (
+                {orderData.items.reduce((sum, item) => sum + item.quantity, 0)}{" "}
+                item
+                {orderData.items.reduce(
+                  (sum, item) => sum + item.quantity,
+                  0,
+                ) !== 1
+                  ? "s"
+                  : ""}
+                ):
               </span>
               <span className="font-bold text-xl text-wine">
                 ${orderData.totalPrice.toFixed(2)}
@@ -251,7 +285,9 @@ export default function CheckoutConfirmation() {
               <FileText className="h-5 w-5" />
               Order Notes
             </h3>
-            <p className="text-gray-700 whitespace-pre-wrap">{orderData.orderNotes}</p>
+            <p className="text-gray-700 whitespace-pre-wrap">
+              {orderData.orderNotes}
+            </p>
           </div>
         )}
 

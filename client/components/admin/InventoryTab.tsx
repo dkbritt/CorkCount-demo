@@ -257,7 +257,9 @@ export function InventoryTab({
             type: item.type || "Red Wine",
             quantity: Number(item.quantity ?? item.inStock ?? 0),
             price: parseFloat(item.price) || 0,
-            status: getInventoryStatus(Number(item.quantity ?? item.inStock ?? 0)),
+            status: getInventoryStatus(
+              Number(item.quantity ?? item.inStock ?? 0),
+            ),
             lastUpdated:
               item.last_updated ||
               item.created_at ||

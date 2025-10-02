@@ -34,7 +34,8 @@ const demoInventory: Wine[] = [
     rating: 4.6,
     description: "Silky red fruit, rose petal, and forest floor.",
     flavorNotes: ["cherry", "raspberry", "earth", "rose"],
-    image: "https://images.pexels.com/photos/14088714/pexels-photo-14088714.jpeg",
+    image:
+      "https://images.pexels.com/photos/14088714/pexels-photo-14088714.jpeg",
     tags: ["pinot", "oregon"],
   },
   {
@@ -49,7 +50,8 @@ const demoInventory: Wine[] = [
     rating: 4.3,
     description: "Bold blackberry, pepper, and vanilla spice.",
     flavorNotes: ["blackberry", "pepper", "vanilla"],
-    image: "https://images.pexels.com/photos/14088708/pexels-photo-14088708.jpeg",
+    image:
+      "https://images.pexels.com/photos/14088708/pexels-photo-14088708.jpeg",
     tags: ["zinfandel"],
   },
   {
@@ -79,7 +81,8 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Crisp green apple and pear with fine mousse.",
     flavorNotes: ["apple", "pear"],
-    image: "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
+    image:
+      "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
     tags: ["sparkling"],
   },
   {
@@ -94,7 +97,8 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Juicy red fruit and garrigue herbs.",
     flavorNotes: ["strawberry", "herbs"],
-    image: "https://images.pexels.com/photos/12582790/pexels-photo-12582790.jpeg",
+    image:
+      "https://images.pexels.com/photos/12582790/pexels-photo-12582790.jpeg",
     tags: ["grenache", "syrah"],
   },
   {
@@ -139,7 +143,8 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Crisp citrus and almond, fine bubbles.",
     flavorNotes: ["citrus", "almond"],
-    image: "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
+    image:
+      "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
     tags: ["cava"],
   },
   {
@@ -154,7 +159,8 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Tempranillo with red cherry, vanilla, and spice.",
     flavorNotes: ["cherry", "vanilla", "spice"],
-    image: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=400&h=600&fit=crop",
     tags: ["tempranillo", "rioja"],
   },
   {
@@ -169,7 +175,8 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Strawberry, melon, and fresh herbs; dry finish.",
     flavorNotes: ["strawberry", "melon", "herbs"],
-    image: "https://images.unsplash.com/photo-1616186793090-b49b8ca005e8?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1616186793090-b49b8ca005e8?w=400&h=600&fit=crop",
     tags: ["ros��"],
   },
   {
@@ -184,7 +191,8 @@ const demoInventory: Wine[] = [
     rating: 4.8,
     description: "Nebbiolo with tar and roses; powerful structure.",
     flavorNotes: ["tar", "rose", "licorice"],
-    image: "https://images.unsplash.com/photo-1677684025416-925ef298ebd5?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1677684025416-925ef298ebd5?w=400&h=600&fit=crop",
     tags: ["nebbiolo", "barolo"],
   },
   {
@@ -199,7 +207,8 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Lightly sparkling, sweet peach and orange blossom.",
     flavorNotes: ["peach", "orange blossom"],
-    image: "https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?w=400&h=600&fit=crop",
     tags: ["moscato", "dessert"],
   },
   {
@@ -214,7 +223,8 @@ const demoInventory: Wine[] = [
     rating: 4.3,
     description: "Flinty minerality, lemon, and gooseberry.",
     flavorNotes: ["lemon", "gooseberry", "flint"],
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=600&fit=crop",
     tags: ["sauvignon blanc", "sancerre"],
   },
   {
@@ -229,7 +239,8 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Sangiovese with cherry, tobacco, and spice.",
     flavorNotes: ["cherry", "tobacco", "spice"],
-    image: "https://images.unsplash.com/photo-1615212995084-b8fa1724617b?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1615212995084-b8fa1724617b?w=400&h=600&fit=crop",
     tags: ["sangiovese", "chianti"],
   },
   {
@@ -244,7 +255,8 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Green apple, lime, and slate with bright acidity.",
     flavorNotes: ["green apple", "lime", "slate"],
-    image: "https://images.unsplash.com/photo-1616401616951-6826c138fa06?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1616401616951-6826c138fa06?w=400&h=600&fit=crop",
     tags: ["riesling", "mosel"],
   },
   {
@@ -259,7 +271,8 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Rich berry, chocolate, and spice; fortified.",
     flavorNotes: ["berry", "chocolate", "spice"],
-    image: "https://images.unsplash.com/photo-1524594224033-2d03f2be8c05?w=400&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1524594224033-2d03f2be8c05?w=400&h=600&fit=crop",
     tags: ["port", "dessert"],
   },
 ];
@@ -277,7 +290,15 @@ let demoOrders: any[] = [
     status: "pending",
     notes: "Please include gift receipt.",
     bottles_ordered: [
-      { wine_id: demoInventory[0].id, wine_name: demoInventory[0].name, wine_vintage: demoInventory[0].vintage, wine_winery: demoInventory[0].winery, quantity: 2, price_per_bottle: demoInventory[0].price, total_price: demoInventory[0].price * 2 },
+      {
+        wine_id: demoInventory[0].id,
+        wine_name: demoInventory[0].name,
+        wine_vintage: demoInventory[0].vintage,
+        wine_winery: demoInventory[0].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[0].price,
+        total_price: demoInventory[0].price * 2,
+      },
     ],
     created_at: new Date().toISOString(),
   },
@@ -291,7 +312,15 @@ let demoOrders: any[] = [
     payment_method: "cash",
     status: "ready-for-pickup",
     bottles_ordered: [
-      { wine_id: demoInventory[3].id, wine_name: demoInventory[3].name, wine_vintage: demoInventory[3].vintage, wine_winery: demoInventory[3].winery, quantity: 3, price_per_bottle: demoInventory[3].price, total_price: demoInventory[3].price * 3 },
+      {
+        wine_id: demoInventory[3].id,
+        wine_name: demoInventory[3].name,
+        wine_vintage: demoInventory[3].vintage,
+        wine_winery: demoInventory[3].winery,
+        quantity: 3,
+        price_per_bottle: demoInventory[3].price,
+        total_price: demoInventory[3].price * 3,
+      },
     ],
     created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -305,8 +334,24 @@ let demoOrders: any[] = [
     payment_method: "cashapp",
     status: "picked-up",
     bottles_ordered: [
-      { wine_id: demoInventory[6].id, wine_name: demoInventory[6].name, wine_vintage: demoInventory[6].vintage, wine_winery: demoInventory[6].winery, quantity: 1, price_per_bottle: demoInventory[6].price, total_price: demoInventory[6].price * 1 },
-      { wine_id: demoInventory[9].id, wine_name: demoInventory[9].name, wine_vintage: demoInventory[9].vintage, wine_winery: demoInventory[9].winery, quantity: 2, price_per_bottle: demoInventory[9].price, total_price: demoInventory[9].price * 2 },
+      {
+        wine_id: demoInventory[6].id,
+        wine_name: demoInventory[6].name,
+        wine_vintage: demoInventory[6].vintage,
+        wine_winery: demoInventory[6].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[6].price,
+        total_price: demoInventory[6].price * 1,
+      },
+      {
+        wine_id: demoInventory[9].id,
+        wine_name: demoInventory[9].name,
+        wine_vintage: demoInventory[9].vintage,
+        wine_winery: demoInventory[9].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[9].price,
+        total_price: demoInventory[9].price * 2,
+      },
     ],
     created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -320,7 +365,15 @@ let demoOrders: any[] = [
     payment_method: "zelle",
     status: "pending",
     bottles_ordered: [
-      { wine_id: demoInventory[1].id, wine_name: demoInventory[1].name, wine_vintage: demoInventory[1].vintage, wine_winery: demoInventory[1].winery, quantity: 4, price_per_bottle: demoInventory[1].price, total_price: demoInventory[1].price * 4 },
+      {
+        wine_id: demoInventory[1].id,
+        wine_name: demoInventory[1].name,
+        wine_vintage: demoInventory[1].vintage,
+        wine_winery: demoInventory[1].winery,
+        quantity: 4,
+        price_per_bottle: demoInventory[1].price,
+        total_price: demoInventory[1].price * 4,
+      },
     ],
     created_at: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -334,7 +387,15 @@ let demoOrders: any[] = [
     payment_method: "cash",
     status: "cancelled",
     bottles_ordered: [
-      { wine_id: demoInventory[12].id, wine_name: demoInventory[12].name, wine_vintage: demoInventory[12].vintage, wine_winery: demoInventory[12].winery, quantity: 1, price_per_bottle: demoInventory[12].price, total_price: demoInventory[12].price * 1 },
+      {
+        wine_id: demoInventory[12].id,
+        wine_name: demoInventory[12].name,
+        wine_vintage: demoInventory[12].vintage,
+        wine_winery: demoInventory[12].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[12].price,
+        total_price: demoInventory[12].price * 1,
+      },
     ],
     created_at: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -348,7 +409,15 @@ let demoOrders: any[] = [
     payment_method: "zelle",
     status: "ready-for-pickup",
     bottles_ordered: [
-      { wine_id: demoInventory[4].id, wine_name: demoInventory[4].name, wine_vintage: demoInventory[4].vintage, wine_winery: demoInventory[4].winery, quantity: 6, price_per_bottle: demoInventory[4].price, total_price: demoInventory[4].price * 6 },
+      {
+        wine_id: demoInventory[4].id,
+        wine_name: demoInventory[4].name,
+        wine_vintage: demoInventory[4].vintage,
+        wine_winery: demoInventory[4].winery,
+        quantity: 6,
+        price_per_bottle: demoInventory[4].price,
+        total_price: demoInventory[4].price * 6,
+      },
     ],
     created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -362,8 +431,24 @@ let demoOrders: any[] = [
     payment_method: "cashapp",
     status: "pending",
     bottles_ordered: [
-      { wine_id: demoInventory[2].id, wine_name: demoInventory[2].name, wine_vintage: demoInventory[2].vintage, wine_winery: demoInventory[2].winery, quantity: 2, price_per_bottle: demoInventory[2].price, total_price: demoInventory[2].price * 2 },
-      { wine_id: demoInventory[10].id, wine_name: demoInventory[10].name, wine_vintage: demoInventory[10].vintage, wine_winery: demoInventory[10].winery, quantity: 1, price_per_bottle: demoInventory[10].price, total_price: demoInventory[10].price * 1 },
+      {
+        wine_id: demoInventory[2].id,
+        wine_name: demoInventory[2].name,
+        wine_vintage: demoInventory[2].vintage,
+        wine_winery: demoInventory[2].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[2].price,
+        total_price: demoInventory[2].price * 2,
+      },
+      {
+        wine_id: demoInventory[10].id,
+        wine_name: demoInventory[10].name,
+        wine_vintage: demoInventory[10].vintage,
+        wine_winery: demoInventory[10].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[10].price,
+        total_price: demoInventory[10].price * 1,
+      },
     ],
     created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -377,7 +462,15 @@ let demoOrders: any[] = [
     payment_method: "cash",
     status: "picked-up",
     bottles_ordered: [
-      { wine_id: demoInventory[15].id, wine_name: demoInventory[15].name, wine_vintage: demoInventory[15].vintage, wine_winery: demoInventory[15].winery, quantity: 3, price_per_bottle: demoInventory[15].price, total_price: demoInventory[15].price * 3 },
+      {
+        wine_id: demoInventory[15].id,
+        wine_name: demoInventory[15].name,
+        wine_vintage: demoInventory[15].vintage,
+        wine_winery: demoInventory[15].winery,
+        quantity: 3,
+        price_per_bottle: demoInventory[15].price,
+        total_price: demoInventory[15].price * 3,
+      },
     ],
     created_at: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
   },
@@ -393,10 +486,14 @@ let demoBatches: any[] = [
     vintage: 2019,
     quantity: 350,
     aging_notes: "Lot 12, barrel aging in French oak.",
-    date_started: new Date(Date.now() - 200 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 200 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 18,
     estimated_aging_unit: "months",
-    estimated_bottling: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    estimated_bottling: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
   },
   {
     id: crypto.randomUUID?.() || `b-${Date.now()}-2`,
@@ -407,7 +504,9 @@ let demoBatches: any[] = [
     vintage: 2021,
     quantity: 600,
     aging_notes: "Secondary fermentation complete.",
-    date_started: new Date(Date.now() - 260 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 260 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 6,
     estimated_aging_unit: "months",
   },
@@ -420,10 +519,14 @@ let demoBatches: any[] = [
     vintage: 2023,
     quantity: 420,
     aging_notes: "Stainless steel fermentation, minimal oak contact.",
-    date_started: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 12,
     estimated_aging_unit: "weeks",
-    estimated_bottling: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    estimated_bottling: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
   },
   {
     id: crypto.randomUUID?.() || `b-${Date.now()}-4`,
@@ -434,7 +537,9 @@ let demoBatches: any[] = [
     vintage: 2022,
     quantity: 500,
     aging_notes: "Fermentation active. Monitoring temperature and sugar.",
-    date_started: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 18,
     estimated_aging_unit: "months",
   },
@@ -447,10 +552,14 @@ let demoBatches: any[] = [
     vintage: 2023,
     quantity: 280,
     aging_notes: "Cold fermented, delicate fruit preserved.",
-    date_started: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 8,
     estimated_aging_unit: "weeks",
-    estimated_bottling: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    estimated_bottling: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
   },
   {
     id: crypto.randomUUID?.() || `b-${Date.now()}-6`,
@@ -461,7 +570,9 @@ let demoBatches: any[] = [
     vintage: 2024,
     quantity: 320,
     aging_notes: "Aromatics developing, cool tank aging.",
-    date_started: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 6,
     estimated_aging_unit: "months",
   },
@@ -474,7 +585,9 @@ let demoBatches: any[] = [
     vintage: 2017,
     quantity: 150,
     aging_notes: "Rich, fortified style; ready for release.",
-    date_started: new Date(Date.now() - 600 * 24 * 60 * 60 * 1000).toISOString().split("T")[0],
+    date_started: new Date(Date.now() - 600 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
     estimated_aging_time: 24,
     estimated_aging_unit: "months",
   },
@@ -488,7 +601,10 @@ function jsonResponse(data: any, status = 200): Response {
 }
 
 function notFound(): Response {
-  return jsonResponse({ success: false, error: "Endpoint not available in demo" }, 404);
+  return jsonResponse(
+    { success: false, error: "Endpoint not available in demo" },
+    404,
+  );
 }
 
 function parseBody(init?: RequestInit): any {
@@ -524,7 +640,17 @@ function handleInventory(path: string, init?: RequestInit): Response {
       return jsonResponse({ success: true, inventory: demoInventory });
     }
     const wines = mapInventoryForCustomer(demoInventory);
-    return jsonResponse({ success: true, wines, pagination: { page: 1, limit: wines.length, total: wines.length, totalPages: 1, hasMore: false } });
+    return jsonResponse({
+      success: true,
+      wines,
+      pagination: {
+        page: 1,
+        limit: wines.length,
+        total: wines.length,
+        totalPages: 1,
+        hasMore: false,
+      },
+    });
   }
   if (method === "POST") {
     const body = parseBody(init) || {};
@@ -552,20 +678,27 @@ function handleInventory(path: string, init?: RequestInit): Response {
       const id = m[1];
       const body = parseBody(init) || {};
       const idx = demoInventory.findIndex((i) => i.id === id);
-      if (idx === -1) return jsonResponse({ success: false, error: "Item not found" }, 404);
+      if (idx === -1)
+        return jsonResponse({ success: false, error: "Item not found" }, 404);
       const updated: Wine = {
         ...demoInventory[idx],
         ...body,
-        inStock: Number(body.quantity ?? body.inStock ?? demoInventory[idx].inStock),
+        inStock: Number(
+          body.quantity ?? body.inStock ?? demoInventory[idx].inStock,
+        ),
         image: body.image_url || body.image || demoInventory[idx].image,
-        flavorNotes: body.flavor_notes || body.flavorNotes || demoInventory[idx].flavorNotes,
+        flavorNotes:
+          body.flavor_notes ||
+          body.flavorNotes ||
+          demoInventory[idx].flavorNotes,
       };
       demoInventory[idx] = updated;
       return jsonResponse({ success: true, item: updated });
     }
     if (path.includes("/inventory/update")) {
       const body = parseBody(init) || {};
-      const updates: Array<{ id: string; newQuantity: number }> = body.updates || [];
+      const updates: Array<{ id: string; newQuantity: number }> =
+        body.updates || [];
       const results = updates.map((u) => {
         const item = demoInventory.find((i) => i.id === u.id);
         if (!item) return { id: u.id, success: false, error: "Item not found" };
@@ -573,7 +706,11 @@ function handleInventory(path: string, init?: RequestInit): Response {
         return { id: u.id, success: true };
       });
       const allSuccessful = results.every((r) => r.success);
-      return jsonResponse({ success: allSuccessful, results, error: allSuccessful ? undefined : "Some inventory updates failed" });
+      return jsonResponse({
+        success: allSuccessful,
+        results,
+        error: allSuccessful ? undefined : "Some inventory updates failed",
+      });
     }
   }
   if (method === "DELETE") {
@@ -582,7 +719,8 @@ function handleInventory(path: string, init?: RequestInit): Response {
       const id = m[1];
       const before = demoInventory.length;
       const remained = demoInventory.filter((i) => i.id !== id);
-      if (remained.length === before) return jsonResponse({ success: false, error: "Item not found" }, 404);
+      if (remained.length === before)
+        return jsonResponse({ success: false, error: "Item not found" }, 404);
       (demoInventory as any).length = 0;
       (demoInventory as any).push(...remained);
       return jsonResponse({ success: true });
@@ -619,15 +757,21 @@ function handleOrders(path: string, init?: RequestInit): Response {
     const id = path.split("/orders/")[1].split("/status")[0];
     const body = parseBody(init) || {};
     const idx = demoOrders.findIndex((o) => o.id === id);
-    if (idx === -1) return jsonResponse({ success: false, error: "Order not found" }, 404);
-    demoOrders[idx] = { ...demoOrders[idx], status: body.status, admin_notes: body.note || demoOrders[idx].admin_notes };
+    if (idx === -1)
+      return jsonResponse({ success: false, error: "Order not found" }, 404);
+    demoOrders[idx] = {
+      ...demoOrders[idx],
+      status: body.status,
+      admin_notes: body.note || demoOrders[idx].admin_notes,
+    };
     return jsonResponse({ success: true, order: demoOrders[idx] });
   }
   if (method === "DELETE") {
     const id = path.split("/orders/")[1];
     const before = demoOrders.length;
     demoOrders = demoOrders.filter((o) => o.id !== id);
-    if (demoOrders.length === before) return jsonResponse({ success: false, error: "Order not found" }, 404);
+    if (demoOrders.length === before)
+      return jsonResponse({ success: false, error: "Order not found" }, 404);
     return jsonResponse({ success: true });
   }
   return notFound();
@@ -640,7 +784,11 @@ function handleBatches(path: string, init?: RequestInit): Response {
   }
   if (method === "POST") {
     const body = parseBody(init) || {};
-    const batch = { id: crypto.randomUUID?.() || `b-${Date.now()}`, created_at: new Date().toISOString(), ...body };
+    const batch = {
+      id: crypto.randomUUID?.() || `b-${Date.now()}`,
+      created_at: new Date().toISOString(),
+      ...body,
+    };
     demoBatches.unshift(batch);
     return jsonResponse({ success: true, batch });
   }
@@ -648,7 +796,8 @@ function handleBatches(path: string, init?: RequestInit): Response {
     const id = path.split("/batches/")[1];
     const body = parseBody(init) || {};
     const idx = demoBatches.findIndex((b) => b.id === id);
-    if (idx === -1) return jsonResponse({ success: false, error: "Batch not found" }, 404);
+    if (idx === -1)
+      return jsonResponse({ success: false, error: "Batch not found" }, 404);
     demoBatches[idx] = { ...demoBatches[idx], ...body };
     return jsonResponse({ success: true, batch: demoBatches[idx] });
   }
@@ -656,7 +805,8 @@ function handleBatches(path: string, init?: RequestInit): Response {
     const id = path.split("/batches/")[1];
     const before = demoBatches.length;
     demoBatches = demoBatches.filter((b) => b.id !== id);
-    if (demoBatches.length === before) return jsonResponse({ success: false, error: "Batch not found" }, 404);
+    if (demoBatches.length === before)
+      return jsonResponse({ success: false, error: "Batch not found" }, 404);
     return jsonResponse({ success: true });
   }
   return notFound();
@@ -681,23 +831,40 @@ function handleConfig(path: string): Response {
     return jsonResponse({ isConfigured: false, isInsecureUrl: false });
   }
   if (path.endsWith("/email")) {
-    return jsonResponse({ isConfigured: false, isProductionReady: false, isDevelopment: true, status: "Email service disabled in demo mode" });
+    return jsonResponse({
+      isConfigured: false,
+      isProductionReady: false,
+      isDevelopment: true,
+      status: "Email service disabled in demo mode",
+    });
   }
   return notFound();
 }
 
 function handleEmail(init?: RequestInit): Response {
   // Simulate success without sending
-  return jsonResponse({ success: true, emailsSent: 1, customerSuccess: true, adminSuccess: false, message: "Simulated in demo mode" });
+  return jsonResponse({
+    success: true,
+    emailsSent: 1,
+    customerSuccess: true,
+    adminSuccess: false,
+    message: "Simulated in demo mode",
+  });
 }
 
 function handleAuth(init?: RequestInit): Response {
   // This path is unused when AdminLoginModal is switched to hardcoded demo auth.
   // Return failure to discourage remote auth usage.
-  return jsonResponse({ success: false, error: "Auth disabled in demo mode" }, 403);
+  return jsonResponse(
+    { success: false, error: "Auth disabled in demo mode" },
+    403,
+  );
 }
 
-export async function apiFetch(inputPath: string, init?: RequestInit): Promise<Response> {
+export async function apiFetch(
+  inputPath: string,
+  init?: RequestInit,
+): Promise<Response> {
   const path = inputPath.startsWith("/") ? inputPath : `/${inputPath}`;
   const method = (init?.method || "GET").toUpperCase();
   console.log(`🔄 Demo API: ${method} ${path}`);
@@ -709,7 +876,8 @@ export async function apiFetch(inputPath: string, init?: RequestInit): Promise<R
   if (path.startsWith("/config/")) return handleConfig(path);
   if (path.startsWith("/email")) return handleEmail(init);
   if (path.startsWith("/auth/")) return handleAuth(init);
-  if (path.startsWith("/ping")) return jsonResponse({ status: "ok", message: "Demo API available" });
+  if (path.startsWith("/ping"))
+    return jsonResponse({ status: "ok", message: "Demo API available" });
 
   return notFound();
 }
