@@ -356,7 +356,7 @@ export default function Index() {
                 className={`font-elegant text-6xl sm:text-8xl lg:text-9xl hero-main-title mb-2 hero-fade-in ${heroInView ? "animate" : ""}`}
                 style={{ animationDelay: "0.2s" }}
               >
-                KB Winery
+                Foxglove Creek Winery
               </div>
               <div
                 className={`font-script text-lg sm:text-2xl lg:text-3xl hero-subtitle mb-6 tracking-wide hero-fade-in ${heroInView ? "animate" : ""}`}
@@ -375,7 +375,7 @@ export default function Index() {
                 style={{ animationDelay: "0.8s" }}
               >
                 <p>
-                  KB Winery's finest — from casual sips to collector's picks,
+                  Foxglove Creek Winery's finest — from casual sips to collector's picks,
                   every bottle tells a story.
                   <br />
                   <strong></strong>

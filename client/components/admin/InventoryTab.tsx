@@ -255,9 +255,11 @@ export function InventoryTab({
             winery: item.winery || "Unknown Winery",
             vintage: item.vintage || new Date().getFullYear(),
             type: item.type || "Red Wine",
-            quantity: parseInt(item.quantity) || 0,
+            quantity: Number(item.quantity ?? item.inStock ?? 0),
             price: parseFloat(item.price) || 0,
-            status: getInventoryStatus(item.quantity),
+            status: getInventoryStatus(
+              Number(item.quantity ?? item.inStock ?? 0),
+            ),
             lastUpdated:
               item.last_updated ||
               item.created_at ||
@@ -430,7 +432,7 @@ export function InventoryTab({
 
       const inventoryData = {
         name: formData.bottleName,
-        winery: "KB Winery", // Default winery
+        winery: "Foxglove Creek Winery", // Default winery
         vintage: parseInt(formData.vintage),
         type: formData.type,
         quantity: quantity,
@@ -576,7 +578,7 @@ export function InventoryTab({
         const newItem: InventoryItem = {
           id: result.item.id,
           name: formData.bottleName,
-          winery: "KB Winery",
+          winery: "Foxglove Creek Winery",
           vintage: parseInt(formData.vintage),
           type: formData.type,
           quantity: quantity,

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { X, AlertCircle, Loader2 } from "lucide-react";
-import { secureSupabase, isSupabaseConfigured } from "@/lib/secureSupabase";
+import { X, AlertCircle, Loader2, Info } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface AdminLoginModalProps {
@@ -20,14 +19,12 @@ export function AdminLoginModal({
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [supabaseConfigured, setSupabaseConfigured] = useState<boolean | null>(
-    null,
-  );
 
-  // Check Supabase configuration on mount
   useEffect(() => {
     if (isOpen) {
-      isSupabaseConfigured().then(setSupabaseConfigured);
+      setEmail("admin@corkcount.com");
+      setPassword("admin123");
+      setError("");
     }
   }, [isOpen]);
 
@@ -43,63 +40,24 @@ export function AdminLoginModal({
     e.preventDefault();
     setError("");
 
-    if (supabaseConfigured === false) {
-      setError("Admin login is disabled until Supabase is configured.");
-      toast({
-        title: "Supabase not configured",
-        description:
-          "Database connection is not available. Please contact the administrator.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (supabaseConfigured === null) {
-      setError("Checking configuration...");
-      return;
-    }
-
     setIsLoading(true);
+    const validEmail = "admin@corkcount.com";
+    const validPassword = "admin123";
 
-    try {
-      const { data, error: authError } =
-        await secureSupabase.auth.signInWithPassword({
-          email: email.trim(),
-          password: password,
-        });
-
-      if (authError) {
-        setError(authError.message || "Invalid email or password");
-        toast({
-          title: "Login failed",
-          description:
-            authError.message || "Please check your credentials and try again.",
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
-
-      if (data.user) {
-        toast({
-          title: "Login successful",
-          description: "Welcome to the admin dashboard!",
-        });
+    setTimeout(() => {
+      if (email.trim().toLowerCase() === validEmail && password === validPassword) {
+        toast({ title: "Login successful", description: "Demo admin access granted." });
         onLogin();
         onClose();
         setEmail("");
         setPassword("");
+        setIsLoading(false);
+      } else {
+        setError("Invalid email or password");
+        toast({ title: "Login failed", description: "Use demo credentials shown below.", variant: "destructive" });
+        setIsLoading(false);
       }
-    } catch (err) {
-      setError("An unexpected error occurred during login");
-      toast({
-        title: "Login error",
-        description: "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    }, 500);
   };
 
   return (
@@ -117,9 +75,16 @@ export function AdminLoginModal({
 
         <div className="mb-6">
           <h2 className="font-playfair text-2xl font-bold text-gray-900 mb-2">
-            Admin Login
+            Admin Login (Demo)
           </h2>
-          <p className="text-gray-600">Sign in to access the admin dashboard</p>
+          <div className="flex items-start gap-2 text-sm text-gray-700 bg-yellow-50 border border-yellow-200 rounded-md p-3">
+            <Info className="h-4 w-4 text-yellow-700 mt-0.5" />
+            <div>
+              <p><span className="font-medium">Use demo credentials:</span></p>
+              <p>Email: <code className="bg-white px-1 rounded border">admin@corkcount.com</code></p>
+              <p>Password: <code className="bg-white px-1 rounded border">admin123</code></p>
+            </div>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -185,33 +150,6 @@ export function AdminLoginModal({
           </Button>
         </form>
 
-        {/* Configuration Status */}
-        {supabaseConfigured === false && (
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="h-5 w-5 text-gray-400 mt-0.5" />
-              <div className="text-sm text-gray-600">
-                <p className="font-medium mb-1">Database not configured</p>
-                <p>
-                  Admin login is disabled. Please contact the administrator to
-                  enable authentication.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {supabaseConfigured === null && (
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <div className="flex items-start gap-3">
-              <Loader2 className="h-5 w-5 text-blue-400 mt-0.5 animate-spin" />
-              <div className="text-sm text-blue-600">
-                <p className="font-medium mb-1">Checking configuration...</p>
-                <p>Verifying database connection.</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

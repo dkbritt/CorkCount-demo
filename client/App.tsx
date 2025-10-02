@@ -21,6 +21,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <div className="w-full bg-yellow-100 text-yellow-900 text-sm py-2 px-4 text-center z-50">
+          Demo Mode: Simulated data. No real emails or external services. Admin login uses demo credentials: admin@corkcount.com / admin123
+        </div>
         <Routes>
           <Route path="/" element={<Index />} />
 
@@ -49,7 +52,7 @@ const App = () => (
             path="/about"
             element={
               <PlaceholderPage
-                title="About KB Winery"
+                title="About Foxglove Creek Winery"
                 description="Learn about our passion for wine and our mission to bring you the finest selections."
                 userRole="customer"
               />
@@ -72,7 +75,7 @@ const App = () => (
             element={
               <PlaceholderPage
                 title="Admin Dashboard"
-                description="Welcome to the KB Winery administration panel. Manage your wine inventory and orders."
+                description="Welcome to the Foxglove Creek Winery administration panel. Manage your wine inventory and orders."
                 userRole="admin"
               />
             }

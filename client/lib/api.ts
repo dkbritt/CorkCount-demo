@@ -1,200 +1,883 @@
-// API client with automatic environment detection
+// Demo-only in-memory API. No external calls.
 
-function withTimeout<T>(p: Promise<T>, ms = 5000): Promise<T> {
-  return new Promise((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error("timeout")), ms);
-    p.then((v) => {
-      clearTimeout(t);
-      resolve(v);
-    }).catch((e) => {
-      clearTimeout(t);
-      reject(e);
-    });
+// Types used by UI
+type Wine = {
+  id: string;
+  name: string;
+  winery: string;
+  vintage: number;
+  region?: string;
+  type: string;
+  price: number;
+  inStock: number;
+  rating?: number;
+  description?: string;
+  flavorNotes?: string[];
+  image?: string;
+  tags?: string[];
+};
+
+// Brand
+const BRAND = "Foxglove Creek Winery";
+
+// In-memory stores
+const demoInventory: Wine[] = [
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-1`,
+    name: "Willamette Valley Pinot Noir",
+    winery: BRAND,
+    vintage: 2019,
+    region: "Oregon, USA",
+    type: "Red Wine",
+    price: 42,
+    inStock: 24,
+    rating: 4.6,
+    description: "Silky red fruit, rose petal, and forest floor.",
+    flavorNotes: ["cherry", "raspberry", "earth", "rose"],
+    image:
+      "https://images.pexels.com/photos/14088714/pexels-photo-14088714.jpeg",
+    tags: ["pinot", "oregon"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-2`,
+    name: "Dry Creek Valley Zinfandel",
+    winery: BRAND,
+    vintage: 2018,
+    region: "California, USA",
+    type: "Red Wine",
+    price: 28,
+    inStock: 40,
+    rating: 4.3,
+    description: "Bold blackberry, pepper, and vanilla spice.",
+    flavorNotes: ["blackberry", "pepper", "vanilla"],
+    image:
+      "https://images.pexels.com/photos/14088708/pexels-photo-14088708.jpeg",
+    tags: ["zinfandel"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-3`,
+    name: "Marlborough Sauvignon Blanc",
+    winery: BRAND,
+    vintage: 2022,
+    region: "New Zealand",
+    type: "White Wine",
+    price: 19,
+    inStock: 36,
+    rating: 4.2,
+    description: "Citrus, gooseberry, and bright acidity.",
+    flavorNotes: ["grapefruit", "gooseberry", "lime"],
+    image: "https://images.pexels.com/photos/4825746/pexels-photo-4825746.jpeg",
+    tags: ["sauvignon blanc"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-4`,
+    name: "Prosecco Superiore",
+    winery: BRAND,
+    vintage: 2021,
+    region: "Veneto, Italy",
+    type: "Sparkling Wine",
+    price: 17,
+    inStock: 50,
+    rating: 4.1,
+    description: "Crisp green apple and pear with fine mousse.",
+    flavorNotes: ["apple", "pear"],
+    image:
+      "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
+    tags: ["sparkling"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-5`,
+    name: "Côtes du Rhône Rouge",
+    winery: BRAND,
+    vintage: 2020,
+    region: "Rhône, France",
+    type: "Red Wine",
+    price: 22,
+    inStock: 0,
+    rating: 4.0,
+    description: "Juicy red fruit and garrigue herbs.",
+    flavorNotes: ["strawberry", "herbs"],
+    image:
+      "https://images.pexels.com/photos/12582790/pexels-photo-12582790.jpeg",
+    tags: ["grenache", "syrah"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-6`,
+    name: "Napa Valley Cabernet Sauvignon",
+    winery: BRAND,
+    vintage: 2017,
+    region: "California, USA",
+    type: "Red Wine",
+    price: 65,
+    inStock: 4,
+    rating: 4.7,
+    description: "Blackcurrant, cedar, and cocoa with firm tannins.",
+    flavorNotes: ["blackcurrant", "cedar", "cocoa"],
+    image: "https://images.pexels.com/photos/373067/pexels-photo-373067.jpeg",
+    tags: ["cabernet", "napa"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-7`,
+    name: "Chablis Premier Cru",
+    winery: BRAND,
+    vintage: 2020,
+    region: "Burgundy, France",
+    type: "White Wine",
+    price: 39,
+    inStock: 5,
+    rating: 4.5,
+    description: "Mineral-driven with green apple and lemon zest.",
+    flavorNotes: ["minerality", "green apple", "lemon"],
+    image: "https://images.pexels.com/photos/1407852/pexels-photo-1407852.jpeg",
+    tags: ["chardonnay", "chablis"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-8`,
+    name: "Cava Brut Reserva",
+    winery: BRAND,
+    vintage: 2021,
+    region: "Penedès, Spain",
+    type: "Sparkling Wine",
+    price: 15,
+    inStock: 60,
+    rating: 4.0,
+    description: "Crisp citrus and almond, fine bubbles.",
+    flavorNotes: ["citrus", "almond"],
+    image:
+      "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
+    tags: ["cava"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-9`,
+    name: "Rioja Crianza",
+    winery: BRAND,
+    vintage: 2019,
+    region: "Rioja, Spain",
+    type: "Red Wine",
+    price: 24,
+    inStock: 34,
+    rating: 4.2,
+    description: "Tempranillo with red cherry, vanilla, and spice.",
+    flavorNotes: ["cherry", "vanilla", "spice"],
+    image:
+      "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?w=400&h=600&fit=crop",
+    tags: ["tempranillo", "rioja"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-10`,
+    name: "Provence Rosé",
+    winery: BRAND,
+    vintage: 2023,
+    region: "Provence, France",
+    type: "Rosé",
+    price: 18,
+    inStock: 42,
+    rating: 4.1,
+    description: "Strawberry, melon, and fresh herbs; dry finish.",
+    flavorNotes: ["strawberry", "melon", "herbs"],
+    image:
+      "https://images.unsplash.com/photo-1616186793090-b49b8ca005e8?w=400&h=600&fit=crop",
+    tags: ["ros��"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-11`,
+    name: "Barolo DOCG",
+    winery: BRAND,
+    vintage: 2016,
+    region: "Piedmont, Italy",
+    type: "Red Wine",
+    price: 89,
+    inStock: 8,
+    rating: 4.8,
+    description: "Nebbiolo with tar and roses; powerful structure.",
+    flavorNotes: ["tar", "rose", "licorice"],
+    image:
+      "https://images.unsplash.com/photo-1677684025416-925ef298ebd5?w=400&h=600&fit=crop",
+    tags: ["nebbiolo", "barolo"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-12`,
+    name: "Moscato d'Asti",
+    winery: BRAND,
+    vintage: 2022,
+    region: "Piedmont, Italy",
+    type: "Dessert Wine",
+    price: 14,
+    inStock: 25,
+    rating: 4.0,
+    description: "Lightly sparkling, sweet peach and orange blossom.",
+    flavorNotes: ["peach", "orange blossom"],
+    image:
+      "https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?w=400&h=600&fit=crop",
+    tags: ["moscato", "dessert"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-13`,
+    name: "Sancerre Blanc",
+    winery: BRAND,
+    vintage: 2021,
+    region: "Loire, France",
+    type: "White Wine",
+    price: 27,
+    inStock: 30,
+    rating: 4.3,
+    description: "Flinty minerality, lemon, and gooseberry.",
+    flavorNotes: ["lemon", "gooseberry", "flint"],
+    image:
+      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=400&h=600&fit=crop",
+    tags: ["sauvignon blanc", "sancerre"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-14`,
+    name: "Chianti Classico",
+    winery: BRAND,
+    vintage: 2019,
+    region: "Tuscany, Italy",
+    type: "Red Wine",
+    price: 21,
+    inStock: 28,
+    rating: 4.1,
+    description: "Sangiovese with cherry, tobacco, and spice.",
+    flavorNotes: ["cherry", "tobacco", "spice"],
+    image:
+      "https://images.unsplash.com/photo-1615212995084-b8fa1724617b?w=400&h=600&fit=crop",
+    tags: ["sangiovese", "chianti"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-15`,
+    name: "German Riesling Kabinett",
+    winery: BRAND,
+    vintage: 2021,
+    region: "Mosel, Germany",
+    type: "White Wine",
+    price: 23,
+    inStock: 2,
+    rating: 4.2,
+    description: "Green apple, lime, and slate with bright acidity.",
+    flavorNotes: ["green apple", "lime", "slate"],
+    image:
+      "https://images.unsplash.com/photo-1616401616951-6826c138fa06?w=400&h=600&fit=crop",
+    tags: ["riesling", "mosel"],
+  },
+  {
+    id: crypto.randomUUID?.() || `w-${Date.now()}-16`,
+    name: "Porto Ruby",
+    winery: BRAND,
+    vintage: 2017,
+    region: "Douro, Portugal",
+    type: "Dessert Wine",
+    price: 26,
+    inStock: 0,
+    rating: 4.1,
+    description: "Rich berry, chocolate, and spice; fortified.",
+    flavorNotes: ["berry", "chocolate", "spice"],
+    image:
+      "https://images.unsplash.com/photo-1524594224033-2d03f2be8c05?w=400&h=600&fit=crop",
+    tags: ["port", "dessert"],
+  },
+];
+
+let demoOrders: any[] = [
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-1`,
+    order_number: "FCW-10001",
+    customer_name: "Ava Thompson",
+    email: "ava@example.com",
+    phone: "555-0101",
+    pickup_date: new Date().toISOString(),
+    pickup_time: "4:30 PM",
+    payment_method: "zelle",
+    status: "pending",
+    notes: "Please include gift receipt.",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[0].id,
+        wine_name: demoInventory[0].name,
+        wine_vintage: demoInventory[0].vintage,
+        wine_winery: demoInventory[0].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[0].price,
+        total_price: demoInventory[0].price * 2,
+      },
+    ],
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-2`,
+    order_number: "FCW-10002",
+    customer_name: "Liam Martinez",
+    email: "liam@example.com",
+    pickup_date: new Date().toISOString(),
+    pickup_time: "1:00 PM",
+    payment_method: "cash",
+    status: "ready-for-pickup",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[3].id,
+        wine_name: demoInventory[3].name,
+        wine_vintage: demoInventory[3].vintage,
+        wine_winery: demoInventory[3].winery,
+        quantity: 3,
+        price_per_bottle: demoInventory[3].price,
+        total_price: demoInventory[3].price * 3,
+      },
+    ],
+    created_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-3`,
+    order_number: "FCW-10003",
+    customer_name: "Emma Johnson",
+    email: "emma@example.com",
+    pickup_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "3:15 PM",
+    payment_method: "cashapp",
+    status: "picked-up",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[6].id,
+        wine_name: demoInventory[6].name,
+        wine_vintage: demoInventory[6].vintage,
+        wine_winery: demoInventory[6].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[6].price,
+        total_price: demoInventory[6].price * 1,
+      },
+      {
+        wine_id: demoInventory[9].id,
+        wine_name: demoInventory[9].name,
+        wine_vintage: demoInventory[9].vintage,
+        wine_winery: demoInventory[9].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[9].price,
+        total_price: demoInventory[9].price * 2,
+      },
+    ],
+    created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-4`,
+    order_number: "FCW-10004",
+    customer_name: "Noah Lee",
+    email: "noah@example.com",
+    pickup_date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "12:00 PM",
+    payment_method: "zelle",
+    status: "pending",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[1].id,
+        wine_name: demoInventory[1].name,
+        wine_vintage: demoInventory[1].vintage,
+        wine_winery: demoInventory[1].winery,
+        quantity: 4,
+        price_per_bottle: demoInventory[1].price,
+        total_price: demoInventory[1].price * 4,
+      },
+    ],
+    created_at: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-5`,
+    order_number: "FCW-10005",
+    customer_name: "Olivia Brown",
+    email: "olivia@example.com",
+    pickup_date: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "11:00 AM",
+    payment_method: "cash",
+    status: "cancelled",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[12].id,
+        wine_name: demoInventory[12].name,
+        wine_vintage: demoInventory[12].vintage,
+        wine_winery: demoInventory[12].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[12].price,
+        total_price: demoInventory[12].price * 1,
+      },
+    ],
+    created_at: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-6`,
+    order_number: "FCW-10006",
+    customer_name: "Ethan Chen",
+    email: "ethan@example.com",
+    pickup_date: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "5:45 PM",
+    payment_method: "zelle",
+    status: "ready-for-pickup",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[4].id,
+        wine_name: demoInventory[4].name,
+        wine_vintage: demoInventory[4].vintage,
+        wine_winery: demoInventory[4].winery,
+        quantity: 6,
+        price_per_bottle: demoInventory[4].price,
+        total_price: demoInventory[4].price * 6,
+      },
+    ],
+    created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-7`,
+    order_number: "FCW-10007",
+    customer_name: "Mia Patel",
+    email: "mia@example.com",
+    pickup_date: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "2:30 PM",
+    payment_method: "cashapp",
+    status: "pending",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[2].id,
+        wine_name: demoInventory[2].name,
+        wine_vintage: demoInventory[2].vintage,
+        wine_winery: demoInventory[2].winery,
+        quantity: 2,
+        price_per_bottle: demoInventory[2].price,
+        total_price: demoInventory[2].price * 2,
+      },
+      {
+        wine_id: demoInventory[10].id,
+        wine_name: demoInventory[10].name,
+        wine_vintage: demoInventory[10].vintage,
+        wine_winery: demoInventory[10].winery,
+        quantity: 1,
+        price_per_bottle: demoInventory[10].price,
+        total_price: demoInventory[10].price * 1,
+      },
+    ],
+    created_at: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: crypto.randomUUID?.() || `o-${Date.now()}-8`,
+    order_number: "FCW-10008",
+    customer_name: "Sophia Garcia",
+    email: "sophia@example.com",
+    pickup_date: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toISOString(),
+    pickup_time: "6:00 PM",
+    payment_method: "cash",
+    status: "picked-up",
+    bottles_ordered: [
+      {
+        wine_id: demoInventory[15].id,
+        wine_name: demoInventory[15].name,
+        wine_vintage: demoInventory[15].vintage,
+        wine_winery: demoInventory[15].winery,
+        quantity: 3,
+        price_per_bottle: demoInventory[15].price,
+        total_price: demoInventory[15].price * 3,
+      },
+    ],
+    created_at: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+  },
+];
+
+let demoBatches: any[] = [
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-1`,
+    name: "FCW Pinot Noir 2019 - Batch A",
+    status: "aging",
+    created_at: new Date().toISOString(),
+    type: "Red Wine",
+    vintage: 2019,
+    quantity: 350,
+    aging_notes: "Lot 12, barrel aging in French oak.",
+    date_started: new Date(Date.now() - 200 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 18,
+    estimated_aging_unit: "months",
+    estimated_bottling: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-2`,
+    name: "FCW Prosecco 2021 - Tirage",
+    status: "bottled",
+    created_at: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "Sparkling",
+    vintage: 2021,
+    quantity: 600,
+    aging_notes: "Secondary fermentation complete.",
+    date_started: new Date(Date.now() - 260 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 6,
+    estimated_aging_unit: "months",
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-3`,
+    name: "FCW Chardonnay 2023 - Tank 4",
+    status: "secondary-fermentation",
+    created_at: new Date(Date.now() - 20 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "White Wine",
+    vintage: 2023,
+    quantity: 420,
+    aging_notes: "Stainless steel fermentation, minimal oak contact.",
+    date_started: new Date(Date.now() - 45 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 12,
+    estimated_aging_unit: "weeks",
+    estimated_bottling: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-4`,
+    name: "FCW Cabernet 2022 - Lot 7",
+    status: "primary-fermentation",
+    created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "Red Wine",
+    vintage: 2022,
+    quantity: 500,
+    aging_notes: "Fermentation active. Monitoring temperature and sugar.",
+    date_started: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 18,
+    estimated_aging_unit: "months",
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-5`,
+    name: "FCW Rosé 2023 - Press Lot",
+    status: "ready-to-bottle",
+    created_at: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "Rosé",
+    vintage: 2023,
+    quantity: 280,
+    aging_notes: "Cold fermented, delicate fruit preserved.",
+    date_started: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 8,
+    estimated_aging_unit: "weeks",
+    estimated_bottling: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-6`,
+    name: "FCW Riesling 2024 - Mosel Style",
+    status: "aging",
+    created_at: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "White Wine",
+    vintage: 2024,
+    quantity: 320,
+    aging_notes: "Aromatics developing, cool tank aging.",
+    date_started: new Date(Date.now() - 25 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 6,
+    estimated_aging_unit: "months",
+  },
+  {
+    id: crypto.randomUUID?.() || `b-${Date.now()}-7`,
+    name: "FCW Port 2017 - Fortified",
+    status: "bottled",
+    created_at: new Date(Date.now() - 365 * 24 * 60 * 60 * 1000).toISOString(),
+    type: "Dessert Wine",
+    vintage: 2017,
+    quantity: 150,
+    aging_notes: "Rich, fortified style; ready for release.",
+    date_started: new Date(Date.now() - 600 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0],
+    estimated_aging_time: 24,
+    estimated_aging_unit: "months",
+  },
+];
+
+function jsonResponse(data: any, status = 200): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { "Content-Type": "application/json" },
   });
 }
 
-// Simple environment detection
-function getEndpointUrl(inputPath: string): string {
-  // Always use /api. In production, Netlify redirects map /api/* to functions.
-  return `/api${inputPath}`;
+function notFound(): Response {
+  return jsonResponse(
+    { success: false, error: "Endpoint not available in demo" },
+    404,
+  );
 }
 
-// XMLHttpRequest-based fetch implementation to bypass analytics interference
-function xhrFetch(url: string, options: RequestInit = {}): Promise<Response> {
-  return new Promise((resolve, reject) => {
-    console.log(`📡 XHR Request: ${options.method || "GET"} ${url}`);
+function parseBody(init?: RequestInit): any {
+  if (!init?.body) return null;
+  try {
+    return typeof init.body === "string" ? JSON.parse(init.body) : init.body;
+  } catch {
+    return null;
+  }
+}
 
-    const xhr = new XMLHttpRequest();
-    const method = (options.method || "GET").toUpperCase();
+function mapInventoryForCustomer(items: Wine[]) {
+  return items
+    .filter((i) => (i.inStock || 0) > 0)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((item) => ({
+      id: item.id,
+      name: item.name,
+      winery: item.winery,
+      vintage: item.vintage,
+      type: item.type,
+      price: item.price,
+      inStock: item.inStock,
+      image: item.image || "/placeholder.svg",
+    }));
+}
 
-    try {
-      xhr.open(method, url, true);
-
-      // Set headers with error handling
-      if (options.headers) {
-        const headers = options.headers as Record<string, string>;
-        Object.entries(headers).forEach(([key, value]) => {
-          try {
-            xhr.setRequestHeader(key, value);
-          } catch (headerError) {
-            console.warn(`⚠️ Failed to set header ${key}:`, headerError);
-          }
-        });
-      }
-
-      // Handle timeout
-      xhr.timeout = 15000; // 15 seconds for better reliability
-
-      xhr.onload = () => {
-        console.log(`📡 XHR Response: ${xhr.status} ${xhr.statusText}`);
-
-        // Create Response-like object with better error handling
-        const response = {
-          ok: xhr.status >= 200 && xhr.status < 300,
-          status: xhr.status,
-          statusText: xhr.statusText,
-          headers: new Headers(),
-          text: () => Promise.resolve(xhr.responseText),
-          json: () => {
-            try {
-              return Promise.resolve(JSON.parse(xhr.responseText));
-            } catch (parseError) {
-              console.error("❌ XHR JSON Parse Error:", parseError);
-              return Promise.reject(new Error("Failed to parse JSON response"));
-            }
-          },
-          clone: () => response,
-        } as Response;
-
-        resolve(response);
-      };
-
-      xhr.onerror = (event) => {
-        console.error("❌ XHR Network Error:", event);
-        reject(
-          new Error(
-            `XHR Network Error: ${xhr.status} ${xhr.statusText || "Unknown network error"}`,
-          ),
-        );
-      };
-
-      xhr.ontimeout = () => {
-        console.error("❌ XHR Timeout");
-        reject(new Error("XHR request timed out after 15 seconds"));
-      };
-
-      xhr.onabort = () => {
-        console.warn("⚠️ XHR Request Aborted");
-        reject(new Error("XHR request was aborted"));
-      };
-
-      // Send request with error handling
-      try {
-        if (options.body) {
-          xhr.send(options.body as string);
-        } else {
-          xhr.send();
-        }
-      } catch (sendError) {
-        console.error("❌ XHR Send Error:", sendError);
-        reject(new Error(`Failed to send XHR request: ${sendError}`));
-      }
-    } catch (setupError) {
-      console.error("❌ XHR Setup Error:", setupError);
-      reject(new Error(`Failed to setup XHR request: ${setupError}`));
+function handleInventory(path: string, init?: RequestInit): Response {
+  const method = (init?.method || "GET").toUpperCase();
+  if (method === "GET") {
+    const isAdmin = /admin=true/.test(path);
+    if (isAdmin) {
+      return jsonResponse({ success: true, inventory: demoInventory });
     }
+    const wines = mapInventoryForCustomer(demoInventory);
+    return jsonResponse({
+      success: true,
+      wines,
+      pagination: {
+        page: 1,
+        limit: wines.length,
+        total: wines.length,
+        totalPages: 1,
+        hasMore: false,
+      },
+    });
+  }
+  if (method === "POST") {
+    const body = parseBody(init) || {};
+    const newItem: Wine = {
+      id: crypto.randomUUID?.() || `w-${Date.now()}`,
+      name: body.name || "New Wine",
+      winery: body.winery || BRAND,
+      vintage: Number(body.vintage) || new Date().getFullYear(),
+      region: body.region || "",
+      type: body.type || "Red Wine",
+      price: Number(body.price) || 0,
+      inStock: Number(body.quantity ?? body.inStock ?? 0),
+      rating: Number(body.rating) || 0,
+      description: body.description || "",
+      flavorNotes: body.flavor_notes || body.flavorNotes || [],
+      image: body.image_url || body.image || "/placeholder.svg",
+      tags: body.tags || [],
+    };
+    demoInventory.unshift(newItem);
+    return jsonResponse({ success: true, item: newItem });
+  }
+  if (method === "PUT") {
+    const m = path.match(/\/inventory\/(.+)$/);
+    if (m) {
+      const id = m[1];
+      const body = parseBody(init) || {};
+      const idx = demoInventory.findIndex((i) => i.id === id);
+      if (idx === -1)
+        return jsonResponse({ success: false, error: "Item not found" }, 404);
+      const updated: Wine = {
+        ...demoInventory[idx],
+        ...body,
+        inStock: Number(
+          body.quantity ?? body.inStock ?? demoInventory[idx].inStock,
+        ),
+        image: body.image_url || body.image || demoInventory[idx].image,
+        flavorNotes:
+          body.flavor_notes ||
+          body.flavorNotes ||
+          demoInventory[idx].flavorNotes,
+      };
+      demoInventory[idx] = updated;
+      return jsonResponse({ success: true, item: updated });
+    }
+    if (path.includes("/inventory/update")) {
+      const body = parseBody(init) || {};
+      const updates: Array<{ id: string; newQuantity: number }> =
+        body.updates || [];
+      const results = updates.map((u) => {
+        const item = demoInventory.find((i) => i.id === u.id);
+        if (!item) return { id: u.id, success: false, error: "Item not found" };
+        item.inStock = Number(u.newQuantity);
+        return { id: u.id, success: true };
+      });
+      const allSuccessful = results.every((r) => r.success);
+      return jsonResponse({
+        success: allSuccessful,
+        results,
+        error: allSuccessful ? undefined : "Some inventory updates failed",
+      });
+    }
+  }
+  if (method === "DELETE") {
+    const m = path.match(/\/inventory\/(.+)$/);
+    if (m) {
+      const id = m[1];
+      const before = demoInventory.length;
+      const remained = demoInventory.filter((i) => i.id !== id);
+      if (remained.length === before)
+        return jsonResponse({ success: false, error: "Item not found" }, 404);
+      (demoInventory as any).length = 0;
+      (demoInventory as any).push(...remained);
+      return jsonResponse({ success: true });
+    }
+  }
+  return notFound();
+}
+
+function handleOrders(path: string, init?: RequestInit): Response {
+  const method = (init?.method || "GET").toUpperCase();
+  if (method === "GET") {
+    return jsonResponse({ success: true, orders: demoOrders });
+  }
+  if (method === "POST") {
+    const body = parseBody(init) || {};
+    const order = {
+      id: crypto.randomUUID?.() || `o-${Date.now()}`,
+      order_number: body.orderNumber,
+      customer_name: body.customerName,
+      email: body.email,
+      phone: body.phone || null,
+      pickup_date: body.pickupDate,
+      pickup_time: body.pickupTime,
+      payment_method: body.paymentMethod,
+      status: "pending",
+      notes: body.orderNotes || null,
+      bottles_ordered: body.bottlesOrdered || [],
+      created_at: new Date().toISOString(),
+    };
+    demoOrders.unshift(order);
+    return jsonResponse({ success: true, order });
+  }
+  if (method === "PUT" && /\/orders\/.+\/status$/.test(path)) {
+    const id = path.split("/orders/")[1].split("/status")[0];
+    const body = parseBody(init) || {};
+    const idx = demoOrders.findIndex((o) => o.id === id);
+    if (idx === -1)
+      return jsonResponse({ success: false, error: "Order not found" }, 404);
+    demoOrders[idx] = {
+      ...demoOrders[idx],
+      status: body.status,
+      admin_notes: body.note || demoOrders[idx].admin_notes,
+    };
+    return jsonResponse({ success: true, order: demoOrders[idx] });
+  }
+  if (method === "DELETE") {
+    const id = path.split("/orders/")[1];
+    const before = demoOrders.length;
+    demoOrders = demoOrders.filter((o) => o.id !== id);
+    if (demoOrders.length === before)
+      return jsonResponse({ success: false, error: "Order not found" }, 404);
+    return jsonResponse({ success: true });
+  }
+  return notFound();
+}
+
+function handleBatches(path: string, init?: RequestInit): Response {
+  const method = (init?.method || "GET").toUpperCase();
+  if (method === "GET") {
+    return jsonResponse({ success: true, batches: demoBatches });
+  }
+  if (method === "POST") {
+    const body = parseBody(init) || {};
+    const batch = {
+      id: crypto.randomUUID?.() || `b-${Date.now()}`,
+      created_at: new Date().toISOString(),
+      ...body,
+    };
+    demoBatches.unshift(batch);
+    return jsonResponse({ success: true, batch });
+  }
+  if (method === "PUT") {
+    const id = path.split("/batches/")[1];
+    const body = parseBody(init) || {};
+    const idx = demoBatches.findIndex((b) => b.id === id);
+    if (idx === -1)
+      return jsonResponse({ success: false, error: "Batch not found" }, 404);
+    demoBatches[idx] = { ...demoBatches[idx], ...body };
+    return jsonResponse({ success: true, batch: demoBatches[idx] });
+  }
+  if (method === "DELETE") {
+    const id = path.split("/batches/")[1];
+    const before = demoBatches.length;
+    demoBatches = demoBatches.filter((b) => b.id !== id);
+    if (demoBatches.length === before)
+      return jsonResponse({ success: false, error: "Batch not found" }, 404);
+    return jsonResponse({ success: true });
+  }
+  return notFound();
+}
+
+function handleMetrics(): Response {
+  // Provide data in shapes expected by MetricsTab
+  const inventory = demoInventory.map((item, idx) => ({
+    id: item.id,
+    name: item.name,
+    type: item.type,
+    quantity: item.inStock,
+    created_at: new Date(Date.now() - idx * 24 * 60 * 60 * 1000).toISOString(),
+  }));
+  const orders = [...demoOrders];
+  const batches = [...demoBatches];
+  return jsonResponse({ success: true, inventory, orders, batches });
+}
+
+function handleConfig(path: string): Response {
+  if (path.endsWith("/supabase")) {
+    return jsonResponse({ isConfigured: false, isInsecureUrl: false });
+  }
+  if (path.endsWith("/email")) {
+    return jsonResponse({
+      isConfigured: false,
+      isProductionReady: false,
+      isDevelopment: true,
+      status: "Email service disabled in demo mode",
+    });
+  }
+  return notFound();
+}
+
+function handleEmail(init?: RequestInit): Response {
+  // Simulate success without sending
+  return jsonResponse({
+    success: true,
+    emailsSent: 1,
+    customerSuccess: true,
+    adminSuccess: false,
+    message: "Simulated in demo mode",
   });
 }
 
-// Check if FullStory is present and causing issues
-function shouldUseXHROnly(): boolean {
-  const hasFullStory = !!(window as any).FS;
-  const fetchStr = window.fetch.toString();
-  const isModifiedFetch = !fetchStr.includes("[native code]");
-
-  // Force XHR if FullStory is detected
-  return hasFullStory && isModifiedFetch;
+function handleAuth(init?: RequestInit): Response {
+  // This path is unused when AdminLoginModal is switched to hardcoded demo auth.
+  // Return failure to discourage remote auth usage.
+  return jsonResponse(
+    { success: false, error: "Auth disabled in demo mode" },
+    403,
+  );
 }
 
 export async function apiFetch(
   inputPath: string,
   init?: RequestInit,
 ): Promise<Response> {
-  const url = getEndpointUrl(inputPath);
+  const path = inputPath.startsWith("/") ? inputPath : `/${inputPath}`;
+  const method = (init?.method || "GET").toUpperCase();
+  console.log(`🔄 Demo API: ${method} ${path}`);
 
-  console.log(`🔄 API Request: ${url}`);
+  if (path.startsWith("/inventory")) return handleInventory(path, init);
+  if (path.startsWith("/orders")) return handleOrders(path, init);
+  if (path.startsWith("/batches")) return handleBatches(path, init);
+  if (path.startsWith("/metrics")) return handleMetrics();
+  if (path.startsWith("/config/")) return handleConfig(path);
+  if (path.startsWith("/email")) return handleEmail(init);
+  if (path.startsWith("/auth/")) return handleAuth(init);
+  if (path.startsWith("/ping"))
+    return jsonResponse({ status: "ok", message: "Demo API available" });
 
-  const requestOptions = {
-    ...init,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      "Cache-Control": "no-cache",
-      ...init?.headers,
-    },
-  };
-
-  // If FullStory is detected, skip fetch entirely and go straight to XHR
-  if (shouldUseXHROnly()) {
-    console.warn(
-      "🚨 FullStory detected - using XHR-only mode to avoid interference",
-    );
-
-    try {
-      const xhrResponse = await xhrFetch(url, requestOptions);
-      console.log(`✅ XHR Direct Success: ${xhrResponse.status}`);
-      return xhrResponse;
-    } catch (xhrError) {
-      console.error(`❌ XHR Direct failed:`, xhrError);
-      throw new Error(
-        "Network error: XHR request failed. Please check your connection.",
-      );
-    }
-  }
-
-  // Standard fetch path (only if no FullStory detected)
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
-    const response = await fetch(url, {
-      ...requestOptions,
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeoutId);
-    console.log(`✅ API Response: ${response.status} ${response.statusText}`);
-    return response;
-  } catch (error) {
-    console.error(`❌ Fetch failed, trying XHR fallback:`, error);
-
-    // Any fetch error gets XHR fallback
-    try {
-      console.warn("🔄 Using XHR fallback due to fetch error...");
-      const xhrResponse = await xhrFetch(url, requestOptions);
-      console.log(`✅ XHR Fallback Success: ${xhrResponse.status}`);
-      return xhrResponse;
-    } catch (xhrError) {
-      console.error(`❌ XHR Fallback also failed:`, xhrError);
-
-      // Final error handling
-      if (error instanceof Error) {
-        if (error.name === "AbortError") {
-          throw new Error("Request timed out. Please try again.");
-        }
-        if (
-          error.message.includes("fetch") ||
-          error.stack?.includes("fullstory")
-        ) {
-          throw new Error(
-            "Network error: Analytics interference detected. Please disable ad blockers or try refreshing the page.",
-          );
-        }
-      }
-
-      throw new Error(
-        "Network error connecting to database. Please check your internet connection and ensure the service is online.",
-      );
-    }
-  }
+  return notFound();
 }

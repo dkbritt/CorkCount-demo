@@ -95,7 +95,7 @@ export function SettingsModal({
       if (result.success) {
         toast({
           title: "Success!",
-          description: `Updated ${result.updated} inventory records to "KB Winery"`,
+          description: `Updated ${result.updated} inventory records to "Foxglove Creek Winery"`,
         });
       } else {
         toast({
@@ -251,7 +251,7 @@ export function SettingsModal({
                   </h4>
                   <p className="text-sm text-gray-600 mb-3 break-words">
                     Updates any existing "CorkCount Winery" entries in the
-                    inventory to "KB Winery". This is a one-time utility to
+                    inventory to "Foxglove Creek Winery". This is a one-time utility to
                     rebrand existing data.
                   </p>
                   <Button
