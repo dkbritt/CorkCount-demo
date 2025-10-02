@@ -169,7 +169,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Strawberry, melon, and fresh herbs; dry finish.",
     flavorNotes: ["strawberry", "melon", "herbs"],
-    image: "https://unsplash.com/photos/person-pouring-wine-on-wine-glass-wS7f61WuRZk",
+    image: "https://unsplash.com/photos/person-pouring-wine-on-wine-glass-wS7f61WuRZk?w=400&h=600&fit=crop",
     tags: ["ros��"],
   },
   {
@@ -184,7 +184,7 @@ const demoInventory: Wine[] = [
     rating: 4.8,
     description: "Nebbiolo with tar and roses; powerful structure.",
     flavorNotes: ["tar", "rose", "licorice"],
-    image: "https://unsplash.com/photos/a-bottle-of-wine-sitting-on-top-of-a-counter-pYfGnJCiI7A",
+    image: "https://unsplash.com/photos/a-bottle-of-wine-sitting-on-top-of-a-counter-pYfGnJCiI7A?w=400&h=600&fit=crop",
     tags: ["nebbiolo", "barolo"],
   },
   {
@@ -199,7 +199,7 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Lightly sparkling, sweet peach and orange blossom.",
     flavorNotes: ["peach", "orange blossom"],
-    image: "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-sScNrKruEPs",
+    image: "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-sScNrKruEPs?w=400&h=600&fit=crop",
     tags: ["moscato", "dessert"],
   },
   {
@@ -229,7 +229,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Sangiovese with cherry, tobacco, and spice.",
     flavorNotes: ["cherry", "tobacco", "spice"],
-    image: "https://unsplash.com/photos/black-glass-bottle-on-white-table-h7gAlRC_JqA",
+    image: "https://unsplash.com/photos/black-glass-bottle-on-white-table-h7gAlRC_JqA?w=400&h=600&fit=crop",
     tags: ["sangiovese", "chianti"],
   },
   {
@@ -244,7 +244,7 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Green apple, lime, and slate with bright acidity.",
     flavorNotes: ["green apple", "lime", "slate"],
-    image: "https://unsplash.com/photos/black-and-white-labeled-bottle-GZUidQEv2GY",
+    image: "https://unsplash.com/photos/black-and-white-labeled-bottle-GZUidQEv2GY?w=400&h=600&fit=crop",
     tags: ["riesling", "mosel"],
   },
   {
