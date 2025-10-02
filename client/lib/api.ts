@@ -169,7 +169,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Strawberry, melon, and fresh herbs; dry finish.",
     flavorNotes: ["strawberry", "melon", "herbs"],
-    image: "https://unsplash.com/photos/person-pouring-wine-on-wine-glass-wS7f61WuRZk=crop",
+    image: "https://unsplash.com/photos/person-pouring-wine-on-wine-glass-wS7f61WuRZk",
     tags: ["ros��"],
   },
   {
@@ -184,7 +184,7 @@ const demoInventory: Wine[] = [
     rating: 4.8,
     description: "Nebbiolo with tar and roses; powerful structure.",
     flavorNotes: ["tar", "rose", "licorice"],
-    image: "https://unsplash.com/photos/a-bottle-of-wine-sitting-on-top-of-a-counter-pYfGnJCiI7A=crop",
+    image: "https://unsplash.com/photos/a-bottle-of-wine-sitting-on-top-of-a-counter-pYfGnJCiI7A",
     tags: ["nebbiolo", "barolo"],
   },
   {
@@ -199,7 +199,7 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Lightly sparkling, sweet peach and orange blossom.",
     flavorNotes: ["peach", "orange blossom"],
-    image: "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-sScNrKruEPs=crop",
+    image: "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-sScNrKruEPs",
     tags: ["moscato", "dessert"],
   },
   {
@@ -229,7 +229,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Sangiovese with cherry, tobacco, and spice.",
     flavorNotes: ["cherry", "tobacco", "spice"],
-    image: "https://unsplash.com/photos/black-glass-bottle-on-white-table-h7gAlRC_JqA=crop",
+    image: "https://unsplash.com/photos/black-glass-bottle-on-white-table-h7gAlRC_JqA",
     tags: ["sangiovese", "chianti"],
   },
   {
@@ -244,7 +244,7 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Green apple, lime, and slate with bright acidity.",
     flavorNotes: ["green apple", "lime", "slate"],
-    image: "https://unsplash.com/photos/black-and-white-labeled-bottle-GZUidQEv2GY=crop",
+    image: "https://unsplash.com/photos/black-and-white-labeled-bottle-GZUidQEv2GY",
     tags: ["riesling", "mosel"],
   },
   {
