@@ -169,7 +169,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Strawberry, melon, and fresh herbs; dry finish.",
     flavorNotes: ["strawberry", "melon", "herbs"],
-    image: "https://images.unsplash.com/photo-1616186793090-b49b8ca005e8?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1616186793090-b49b8ca005e8?w=400&h=600&fit=crop",
     tags: ["ros��"],
   },
   {
