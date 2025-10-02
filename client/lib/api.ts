@@ -169,7 +169,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Strawberry, melon, and fresh herbs; dry finish.",
     flavorNotes: ["strawberry", "melon", "herbs"],
-    image: "https://images.unsplash.com/photo-1523365280197-f1783db9fe62?w=400&h=600&fit=crop",
+    image: "https://unsplash.com/photos/person-pouring-wine-on-wine-glass-wS7f61WuRZk=crop",
     tags: ["ros��"],
   },
   {
@@ -184,7 +184,7 @@ const demoInventory: Wine[] = [
     rating: 4.8,
     description: "Nebbiolo with tar and roses; powerful structure.",
     flavorNotes: ["tar", "rose", "licorice"],
-    image: "https://images.unsplash.com/photo-1453838956707-38a7aa3cd62d?w=400&h=600&fit=crop",
+    image: "https://unsplash.com/photos/a-bottle-of-wine-sitting-on-top-of-a-counter-pYfGnJCiI7A=crop",
     tags: ["nebbiolo", "barolo"],
   },
   {
@@ -199,7 +199,7 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Lightly sparkling, sweet peach and orange blossom.",
     flavorNotes: ["peach", "orange blossom"],
-    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=400&h=600&fit=crop",
+    image: "https://unsplash.com/photos/clear-wine-glass-with-yellow-liquid-sScNrKruEPs=crop",
     tags: ["moscato", "dessert"],
   },
   {
@@ -229,7 +229,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Sangiovese with cherry, tobacco, and spice.",
     flavorNotes: ["cherry", "tobacco", "spice"],
-    image: "https://images.unsplash.com/photo-1541542684-4a7e9f3eec0c?w=400&h=600&fit=crop",
+    image: "https://unsplash.com/photos/black-glass-bottle-on-white-table-h7gAlRC_JqA=crop",
     tags: ["sangiovese", "chianti"],
   },
   {
@@ -244,7 +244,7 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Green apple, lime, and slate with bright acidity.",
     flavorNotes: ["green apple", "lime", "slate"],
-    image: "https://images.unsplash.com/photo-1532634726-8b9fb99825c7?w=400&h=600&fit=crop",
+    image: "https://unsplash.com/photos/black-and-white-labeled-bottle-GZUidQEv2GY=crop",
     tags: ["riesling", "mosel"],
   },
   {
