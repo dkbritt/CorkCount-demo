@@ -255,9 +255,9 @@ export function InventoryTab({
             winery: item.winery || "Unknown Winery",
             vintage: item.vintage || new Date().getFullYear(),
             type: item.type || "Red Wine",
-            quantity: parseInt(item.quantity) || 0,
+            quantity: Number(item.quantity ?? item.inStock ?? 0),
             price: parseFloat(item.price) || 0,
-            status: getInventoryStatus(item.quantity),
+            status: getInventoryStatus(Number(item.quantity ?? item.inStock ?? 0)),
             lastUpdated:
               item.last_updated ||
               item.created_at ||
