@@ -34,7 +34,7 @@ const demoInventory: Wine[] = [
     rating: 4.6,
     description: "Silky red fruit, rose petal, and forest floor.",
     flavorNotes: ["cherry", "raspberry", "earth", "rose"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/14088714/pexels-photo-14088714.jpeg",
     tags: ["pinot", "oregon"],
   },
   {
@@ -49,7 +49,7 @@ const demoInventory: Wine[] = [
     rating: 4.3,
     description: "Bold blackberry, pepper, and vanilla spice.",
     flavorNotes: ["blackberry", "pepper", "vanilla"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/14088708/pexels-photo-14088708.jpeg",
     tags: ["zinfandel"],
   },
   {
@@ -64,7 +64,7 @@ const demoInventory: Wine[] = [
     rating: 4.2,
     description: "Citrus, gooseberry, and bright acidity.",
     flavorNotes: ["grapefruit", "gooseberry", "lime"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/4825746/pexels-photo-4825746.jpeg",
     tags: ["sauvignon blanc"],
   },
   {
@@ -79,7 +79,7 @@ const demoInventory: Wine[] = [
     rating: 4.1,
     description: "Crisp green apple and pear with fine mousse.",
     flavorNotes: ["apple", "pear"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
     tags: ["sparkling"],
   },
   {
@@ -94,7 +94,7 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Juicy red fruit and garrigue herbs.",
     flavorNotes: ["strawberry", "herbs"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/12582790/pexels-photo-12582790.jpeg",
     tags: ["grenache", "syrah"],
   },
   {
@@ -109,7 +109,7 @@ const demoInventory: Wine[] = [
     rating: 4.7,
     description: "Blackcurrant, cedar, and cocoa with firm tannins.",
     flavorNotes: ["blackcurrant", "cedar", "cocoa"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/373067/pexels-photo-373067.jpeg",
     tags: ["cabernet", "napa"],
   },
   {
@@ -124,7 +124,7 @@ const demoInventory: Wine[] = [
     rating: 4.5,
     description: "Mineral-driven with green apple and lemon zest.",
     flavorNotes: ["minerality", "green apple", "lemon"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/1407852/pexels-photo-1407852.jpeg",
     tags: ["chardonnay", "chablis"],
   },
   {
@@ -139,7 +139,7 @@ const demoInventory: Wine[] = [
     rating: 4.0,
     description: "Crisp citrus and almond, fine bubbles.",
     flavorNotes: ["citrus", "almond"],
-    image: "/placeholder.svg",
+    image: "https://images.pexels.com/photos/26837415/pexels-photo-26837415.jpeg",
     tags: ["cava"],
   },
   {
